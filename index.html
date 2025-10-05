@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de Boda - Abril & Pablo</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:'Playfair Display', serif;
+  background: url('fondo_floral.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color:#333;
+  overflow-x:hidden;
+}
+
+/* Partículas mágicas y destellos */
+#particles-js { position: fixed; width:100%; height:100%; z-index:1; }
+#anillo-container {
+  position: fixed;
+  top:50%; left:50%;
+  transform: translate(-50%,-50%);
+  width:150px; height:150px;
+  z-index:2;
+  cursor:pointer;
+}
+#anillo {
+  width:100%; height:100%;
+  border:5px solid gold;
+  border-radius:50%;
+  box-shadow:0 0 40px 15px gold, 0 0 60px 20px #FFD700, 0 0 80px 25px rgba(255,215,0,0.5);
+  animation: girar 4s linear infinite, brillo 2s ease-in-out infinite alternate;
+}
+@keyframes girar { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+@keyframes brillo { 0% { box-shadow:0 0 40px 15px gold, 0 0 60px 20px #FFD700, 0 0 80px 25px rgba(255,215,0,0.5);} 
+                   50% { box-shadow:0 0 60px 25px gold, 0 0 80px 30px #FFD700, 0 0 100px 40px rgba(255,215,0,0.7);} 
+                   100% { box-shadow:0 0 40px 15px gold, 0 0 60px 20px #FFD700, 0 0 80px 25px rgba(255,215,0,0.5);} }
+
+/* Invitación */
+#invitacion {
+  display:none;
+  position:relative;
+  z-index:3;
+  max-width:900px;
+  margin:3rem auto;
+  padding:2rem;
+  background: rgba(255,255,255,0.95);
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(0,0,0,0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+
+h1,h2,h3 { font-family:'Great Vibes', cursive; color:#1E3A8A; }
+.boton-audio {
+  margin:1rem; padding:0.5rem 1rem;
+  background: gold; border:none; border-radius:10px;
+  cursor:pointer; font-family:'Playfair Display', serif;
+}
+.seccion { margin:2rem 0; }
+.collage img { width:30%; margin:0.5%; border-radius:15px; }
+.whatsapp-btn {
+  display:inline-block;
+  margin:1rem;
+  padding:0.5rem 1rem;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+}
+.mapa { width:100%; height:400px; border:none; border-radius:20px; margin-top:1rem; }
+textarea { width:80%; height:100px; border-radius:10px; padding:10px; font-family:'Playfair Display', serif; }
+
+/* Pergamino */
+#pergamino {
+  display:none;
+  margin:1rem auto;
+  padding:2rem;
+  background: linear-gradient(to bottom, #fefcea, #f1da36);
+  border:5px solid #d4af37;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+<body>
+
+<!-- Partículas mágicas -->
+<div id="particles-js"></div>
+
+<!-- Anillo giratorio mágico -->
+<div id="anillo-container">
+  <div id="anillo"></div>
+</div>
+
+<!-- Invitación -->
+<div id="invitacion">
+  <div id="pergamino">
+    <h1 style="font-size:3rem; color:#1E3A8A;">Con Amor Eterno</h1>
+  </div>
+
+  <!-- Música -->
+  <audio id="musica" src="eternamente.mp3"></audio>
+  <button class="boton-audio" onclick="toggleAudio()">Reproducir/Pausar Música</button>
+
+  <!-- Foto de los novios -->
+  <div class="seccion">
+    <img src="foto1.jpg" alt="Abril & Pablo" style="width:50%; border-radius:20px;">
+    <h2>Abril & Pablo</h2>
+  </div>
+
+  <!-- Padres -->
+  <div class="seccion">
+    <h3>Hija de: Eva Aguilar Rendón & Pedro Pérez Hernández</h3>
+    <h3>Hijo de: Saray Hernández Santana & Pablo Tinoco Carranza (finado)</h3>
+  </div>
+
+  <!-- Frase bíblica -->
+  <div class="seccion">
+    <h2 style="color:#F43F5E;">Mateo 19:6</h2>
+    <p style="font-size:1.3rem;">“Por tanto, lo que Dios ha unido, que no lo separe el hombre.”</p>
+  </div>
+
+  <!-- Ceremonia -->
+  <div class="seccion">
+    <h2>🕍 Ceremonia Religiosa</h2>
+    <p>2:00 PM - Jardín El Abuelo</p>
+    <iframe class="mapa" src="https://www.bing.com/maps/embed?h=400&w=800&cp=18.627356~-99.163499&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8"></iframe>
+  </div>
+
+  <!-- Recepción -->
+  <div class="seccion">
+    <h2>🍴 Recepción</h2>
+    <p>4:00 PM - Jardín El Abuelo, Tlaquiltenango</p>
+    <iframe class="mapa" src="https://www.bing.com/maps/embed?h=400&w=800&cp=18.627356~-99.163499&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8"></iframe>
+  </div>
+
+  <!-- Cuenta regresiva -->
+  <div class="seccion">
+    <h2>Cuenta regresiva para la boda:</h2>
+    <h3 id="countdown"></h3>
+  </div>
+
+  <!-- Momentos -->
+  <div class="seccion collage">
+    <h2>Nuestros hermosos momentos</h2>
+    <p>Tu amor es lo que he anhelado; y el regalo que Dios me ha dado</p>
+    <img src="momento1.jpg">
+    <img src="momento2.jpg">
+    <img src="momento3.jpg">
+  </div>
+
+  <!-- Sugerencias de canciones -->
+  <div class="seccion">
+    <h2>Sugiérenos canciones</h2>
+    <p>Comparte tus canciones favoritas</p>
+    <img src="momento4.jpg" style="width:50%; border-radius:20px;">
+  </div>
+
+  <!-- Compartir fotos del evento -->
+  <div class="seccion">
+    <h2>Comparte fotografías del evento</h2>
+    <img src="momento5.jpg" style="width:50%; border-radius:20px;">
+  </div>
+
+  <!-- Confirmar asistencia -->
+  <div class="seccion">
+    <h2>Confirma tu asistencia</h2>
+    <a href="https://wa.me/5217774914500" class="whatsapp-btn">WhatsApp Abril</a>
+    <a href="https://wa.me/5217341123645" class="whatsapp-btn">WhatsApp Pablo</a>
+  </div>
+
+  <!-- Buenos deseos -->
+  <div class="seccion">
+    <h2>Gracias por acompañarnos</h2>
+    <textarea placeholder="Escribe tus buenos deseos..."></textarea>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {"value": 150},
+    "color": {"value": ["#FFD700","#ffffff","#1E3A8A"]},
+    "shape": {"type": "circle"},
+    "opacity": {"value": 0.9},
+    "size": {"value": 5, "random": true},
+    "line_linked": {"enable": false},
+    "move": {"enable": true, "speed": 3, "direction":"none", "out_mode":"out"}
+  }
+});
+
+const anillo = document.getElementById('anillo');
+const invitacion = document.getElementById('invitacion');
+const pergamino = document.getElementById('pergamino');
+const musica = document.getElementById('musica');
+
+anillo.addEventListener('click', () => {
+  anillo.style.animation = 'none';
+  pergamino.style.display = 'block';
+  invitacion.style.display = 'block';
+  musica.play();
+});
+
+function toggleAudio() {

@@ -4,105 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Boda - Abril & Pablo</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tipografía estilo cuento de hadas -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Princess+Sofia&display=swap" rel="stylesheet">
+
 <style>
-  body {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    background-color: #f0f8ff;
-    color: #333;
-    overflow-x: hidden;
-  }
+/* ===== Reset y body ===== */
+body { margin:0; font-family:'Princess Sofia', cursive; background:#f0f8ff; color:#333; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
 
-  header {
-    text-align: center;
-    padding: 60px 20px 40px;
-    background: linear-gradient(to bottom, #cce7ff, #ffffff);
-    position: relative;
-    overflow: hidden;
-  }
-  header h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5em;
-    color: #219AB6;
-    margin: 0;
-    z-index: 2;
-    position: relative;
-  }
-  header h2 {
-    font-size: 1.5em;
-    color: #4a4a4a;
-    margin-top: 10px;
-  }
+/* ===== Fondo floral con overlay ===== */
+body { background: url('imagenes/fondo_floral.jpg') no-repeat center center fixed; background-size: cover; }
+body::before { content:""; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.75); z-index:-1; }
 
-  .luces {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: girar 20s linear infinite;
-    pointer-events: none;
-  }
-  @keyframes girar { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+/* ===== Header ===== */
+header { text-align:center; padding:60px 20px 40px; position:relative; overflow:hidden; }
+header h1 { font-family:'Great Vibes', cursive; font-size:3em; color:#219AB6; margin:0; }
+header h2 { font-family:'Princess Sofia', cursive; font-size:1.5em; color:#4a4a4a; margin-top:10px; }
+.luces { position:absolute; width:200%; height:200%; top:-50%; left:-50%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: girar 20s linear infinite; pointer-events:none; }
+@keyframes girar { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
 
-  #inicio {
-    text-align: center;
-    margin: 50px 0;
-    position: relative;
-    cursor: pointer;
-  }
-  #anillo svg {
-    filter: drop-shadow(0 0 25px deepskyblue) drop-shadow(0 0 35px white);
-    animation: girarAnillo 15s linear infinite, aparecerAnillo 2s ease-out forwards;
-    opacity: 0;
-    transform: scale(0.5) rotate(0deg);
-    transition: transform 0.3s;
-  }
-  #anillo svg:hover {
-    transform: scale(1.1) rotate(0deg);
-  }
-  @keyframes girarAnillo { 0%{transform:scale(1) rotate(0deg);} 100%{transform:scale(1) rotate(360deg);} }
-  @keyframes aparecerAnillo { 0%{opacity:0; transform:scale(0.5);} 100%{opacity:1; transform:scale(1);} }
+/* ===== Padres e invitación ===== */
+#padres { text-align:center; margin:20px 0; font-size:1.2em; color:#555; }
+#padres p { margin:5px 0; }
 
-  #eventos { max-width: 800px; margin:auto; padding:20px; }
-  .evento {
-    margin: 25px 0;
-    padding: 20px;
-    border-radius: 15px;
-    background: linear-gradient(145deg, #e0f7ff, #ffffff);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
-  }
+/* ===== Inicio - Anillo premium ===== */
+#inicio { text-align:center; margin:50px 0; cursor:pointer; position:relative; }
+#anillo svg { filter: drop-shadow(0 0 25px deepskyblue) drop-shadow(0 0 35px white); animation: aparecerAnillo 2s ease-out forwards, brilloAnillo 1.5s infinite alternate; opacity:0; transform: scale(0.5); transition: transform 0.5s; }
+#anillo svg:hover { transform: scale(1.15); }
+@keyframes aparecerAnillo { 0%{opacity:0; transform:scale(0.5);} 100%{opacity:1; transform:scale(1);} }
+@keyframes brilloAnillo { 0%{filter:drop-shadow(0 0 20px deepskyblue);} 100%{filter:drop-shadow(0 0 35px white);} }
 
-  #mapa iframe {
-    width: 100%;
-    height: 400px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.2);
-    border: 0;
-    margin-top: 20px;
-  }
+#acepto { display:none; font-size:2.5em; color:#219AB6; margin-top:20px; font-family:'Great Vibes', cursive; text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #219AB6,0 0 30px #219AB6,0 0 40px #219AB6,0 0 55px #219AB6,0 0 75px #219AB6; animation: brilloDestello 1.8s ease-in-out infinite alternate, bounce 1s ease forwards; }
+@keyframes brilloDestello { 0%{text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #219AB6,0 0 30px #219AB6,0 0 40px #219AB6,0 0 55px #219AB6,0 0 75px #219AB6;} 50%{text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #00ffff,0 0 40px #00ffff,0 0 55px #219AB6,0 0 70px #00ffff,0 0 90px #00ffff;} 100%{text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #219AB6,0 0 30px #219AB6,0 0 40px #219AB6,0 0 55px #219AB6,0 0 75px #219AB6;} }
+@keyframes bounce { 0%{transform:scale(0.3);} 50%{transform:scale(1.2);} 70%{transform:scale(0.9);} 100%{transform:scale(1);} }
 
-  section { margin: 50px 0; padding: 0 20px; }
-  h2 { text-align:center; color:#219AB6; margin-bottom:40px; }
+/* ===== Eventos ===== */
+.evento { margin:25px 0; padding:20px; border-radius:15px; background: linear-gradient(145deg,#e0f7ff,#ffffff); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+.evento h3 { display:flex; align-items:center; gap:10px; font-family:'Great Vibes', cursive; color:#219AB6; }
+.icono { width:40px; height:40px; }
 
-  .galeria { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
-  .galeria img {
-    width:200px; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.2);
-    cursor:pointer; transition: transform 0.5s, box-shadow 0.5s; opacity:0; transform:translateY(30px);
-  }
-  .galeria img:hover { transform:scale(1.1); box-shadow:0 0 25px rgba(33,154,182,0.5); }
+/* ===== Collage de fotos ===== */
+.collage { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); grid-auto-rows:150px; gap:10px; margin:20px auto; justify-items:center; align-items:center; }
+.collage img { width:100%; height:100%; object-fit:cover; border-radius:15px; box-shadow:0 0 15px rgba(0,0,0,0.2); transition: transform 0.5s, box-shadow 0.5s; }
+.collage img:hover { transform:scale(1.1); box-shadow:0 0 25px rgba(33,154,182,0.5); }
 
-  .deseos, .comentarios { max-width:600px; margin:auto; opacity:0; transform:translateY(30px); }
-  .comentarios input, .comentarios textarea, .deseos textarea { width:100%; padding:12px; margin:12px 0; border-radius:12px; border:1px solid #ccc; }
-  .boton-whatsapp { display:inline-block; background-color:#25D366; color:white; padding:12px 25px; border-radius:50px; text-decoration:none; margin:15px; font-weight:bold; transition: transform 0.3s, box-shadow 0.3s; }
-  .boton-whatsapp:hover { transform:scale(1.05); box-shadow:0 0 15px rgba(0,0,0,0.3); }
+/* ===== Frase especial ===== */
+#frase { text-align:center; font-size:1.8em; margin:40px 20px; color:#219AB6; font-family:'Great Vibes', cursive; }
+
+/* ===== Código de vestimenta ===== */
+#vestimenta { display:flex; align-items:center; gap:15px; margin:30px; font-size:1.2em; }
+.colores { display:flex; gap:10px; }
+.color { width:25px; height:25px; border-radius:50%; border:1px solid #555; }
+
+/* ===== Formularios confirmación, deseos y fotos ===== */
+form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:10px; }
+input, textarea, select { padding:12px; border-radius:12px; border:1px solid #ccc; font-family:'Princess Sofia', cursive; }
+button { padding:12px 25px; border-radius:50px; background:#219AB6; color:white; border:none; cursor:pointer; font-family:'Princess Sofia', cursive; transition:0.3s; }
+button:hover { background:#0d7a99; }
+
+/* ===== WhatsApp botones ===== */
+.boton-whatsapp { display:inline-block; background-color:#25D366; color:white; padding:12px 25px; border-radius:50px; text-decoration:none; margin:15px; font-weight:bold; transition: transform 0.3s, box-shadow 0.3s; }
+.boton-whatsapp:hover { transform:scale(1.05); box-shadow:0 0 15px rgba(0,0,0,0.3); }
+
+/* ===== Responsive ===== */
+@media(max-width:600px){ header h1 { font-size:2.2em; } header h2{ font-size:1.2em;} #inicio svg{width:140px;height:140px;} .collage{grid-auto-rows:120px;} }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -111,7 +80,13 @@
   <h2>“Por tanto, lo que Dios ha unido, que no lo separe el hombre.” — Mateo 19:6</h2>
 </header>
 
-<section id="inicio" title="Haz clic en el anillo para escuchar Eternamente Enamorados">
+<div id="padres">
+  <p><strong>Tienen el honor de invitarles a compartir la dicha de sus amados hijos</strong></p>
+  <p>Padres de la novia: Eva Aguilar Rendón & Pedro Pérez Hernández</p>
+  <p>Padres del novio: Saray Hernández Santana & Pablo Tinoco Carranza (finado)</p>
+</div>
+
+<section id="inicio" title="Haz clic en el anillo para aceptar">
   <div id="anillo">
     <svg width="180" height="180" viewBox="0 0 150 150">
       <circle cx="75" cy="75" r="60" stroke="silver" stroke-width="8" fill="none">
@@ -123,9 +98,9 @@
       </polygon>
     </svg>
   </div>
+  <p id="acepto">¡Sí acepto!</p>
 
-  <!-- Música de fondo -->
-  <audio id="marcha" autoplay loop>
+  <audio id="marcha" autoplay>
     <source src="musica/marcha_nupcial.mp3" type="audio/mpeg">
   </audio>
   <audio id="eterna">
@@ -133,77 +108,83 @@
   </audio>
 </section>
 
+<!-- Eventos: Ceremonia y Recepción -->
 <section id="eventos">
-  <h2>Detalles del Evento</h2>
   <div class="evento">
-    <h3>Ceremonia Religiosa</h3>
-    <p>🕝 2:30 PM</p>
-    <p>📍 Jardín El Abuelo, Tlaquiltenango, Morelos</p>
+    <h3><img src="iconos/iglesia2d.gif" class="icono"> Ceremonia Religiosa</h3>
+    <p>🕑 2:00 PM - Iglesia Cristiana "Palabra de Vida"</p>
+    <p>📍 <a href="https://maps.app.goo.gl/4wR8NornyG7r3Ava8" target="_blank">Ver ubicación</a></p>
   </div>
   <div class="evento">
-    <h3>Recepción</h3>
-    <p>🕓 4:00 PM</p>
-    <p>📍 Jardín El Abuelo, Tlaquiltenango, Morelos</p>
-  </div>
-  <div id="mapa">
-    <iframe src="https://www.bing.com/maps/embed?h=400&w=800&cp=18.627356~-99.163499&lvl=16&typ=d&sty=r&src=SHELL&form=S00027"></iframe>
-    <p>Para ver la ubicación completa y rutas, <a href="https://www.bing.com/maps?&ty=18&q=Jard%C3%ADn%20El%20Abuelo%2C%20Tlaquiltenango%2C%20Morelos%2C%20M%C3%A9xico" target="_blank">haz clic aquí</a>.</p>
+    <h3><img src="iconos/recepcion2d.gif" class="icono"> Recepción</h3>
+    <p>🕓 4:00 PM - Jardín "El Abuelo", Tlaquiltenango, Morelos</p>
+    <p>📍 <a href="https://www.google.com/maps/place/Jard%C3%ADn+El+Abuelo/" target="_blank">Ver ubicación</a></p>
   </div>
 </section>
 
+<!-- Collage momentos -->
 <section class="galeria">
-  <h2>Galería de Fotos</h2>
-  <img src="imagenes/foto1.jpg" alt="Foto 1">
-  <img src="imagenes/foto2.jpg" alt="Foto 2">
-  <img src="imagenes/foto3.jpg" alt="Foto 3">
+  <h2>Nuestros Hermosos Momentos</h2>
+  <div class="collage">
+    <img src="imagenes/momento1.jpg" alt="Momento 1">
+    <img src="imagenes/momento2.jpg" alt="Momento 2">
+    <img src="imagenes/momento3.jpg" alt="Momento 3">
+    <img src="imagenes/momento4.jpg" alt="Momento 4">
+  </div>
 </section>
 
-<section class="deseos">
-  <h2>Deseos para los Novios</h2>
-  <textarea placeholder="Escribe tu deseo aquí..."></textarea>
-  <button>Enviar</button>
+<section id="frase">
+  <img src="imagenes/momento5.jpg" alt="Frase especial" style="width:60%; border-radius:15px; display:block; margin:auto;">
+  <p>Tu amor es lo que he anhelado y el regalo que Dios me ha dado</p>
 </section>
 
-<section class="comentarios">
-  <h2>Confirmar Asistencia</h2>
-  <input type="text" placeholder="Nombre">
-  <textarea placeholder="Mensaje o comentario"></textarea>
-  <button>Enviar</button>
+<!-- Código de vestimenta -->
+<section id="vestimenta">
+  <img src="iconos/vestimenta2d.gif" class="icono">
+  <p>Dejemos el blanco para la novia</p>
+  <div class="colores">
+    <div class="color" style="background:#219AB6;"></div>
+    <div class="color" style="background:#00B894;"></div>
+    <div class="color" style="background:#BDC3C7;"></div>
+    <div class="color" style="background:#95A5A6;"></div>
+  </div>
 </section>
 
-<section style="text-align:center;">
-  <a href="https://wa.me/5211234567890" class="boton-whatsapp" target="_blank">WhatsApp Abril</a>
-  <a href="https://wa.me/5210987654321" class="boton-whatsapp" target="_blank">WhatsApp Pablo</a>
+<!-- Confirmación de asistencia -->
+<section>
+  <h2>Confirma tu asistencia</h2>
+  <form id="confirmacion">
+    <input type="text" placeholder="Nombre completo" required>
+    <input type="number" placeholder="Número de personas que asistirán contigo" min="1" max="10" required>
+    <button type="submit">Confirmar</button>
+  </form>
 </section>
 
-<script>
-  // Música al cargar
-  const marcha = document.getElementById('marcha');
-  const eterna = document.getElementById('eterna');
+<!-- Buenos deseos -->
+<section>
+  <h2>Buenos Deseos</h2>
+  <form id="deseos">
+    <textarea placeholder="Escribe tus deseos para los novios..." rows="4" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
 
-  window.addEventListener('load', () => {
-    marcha.play().catch(()=>console.log('Bloqueo de reproducción automática'));
-  });
+<!-- Compartir fotos del evento -->
+<section>
+  <h2>Comparte tus fotos del evento</h2>
+  <form id="fotos">
+    <input type="file" accept="image/*" multiple required>
+    <button type="submit">Subir Fotos</button>
+  </form>
+</section>
 
-  // Al hacer clic en el anillo, cambia la música
-  document.getElementById('anillo').addEventListener('click', () => {
-    marcha.pause();
-    eterna.play();
-  });
+<!-- WhatsApp -->
+<section style="text-align:center; margin:40px 0;">
+  <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-whatsapp">WhatsApp Abril</a>
+  <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-whatsapp">WhatsApp Pablo</a>
+</section>
 
-  // Animaciones fade-in al scroll
-  const elementos = document.querySelectorAll('.evento, .galeria img, .deseos, .comentarios');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, {threshold:0.2});
-  elementos.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+<!-- Agradecimiento final -->
+<section style="text-align:center; margin:40px 20px;">
+  <p style="font-size:1.5em; color:#219AB
  
